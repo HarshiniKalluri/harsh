@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+</head>
+<body>
+
+  <h1>Registration Form</h1>
+
+  <form id="registrationForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <br>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+
+    <br>
+
+    <label for="dob">Date of Birth:</label>
+    <input type="date" id="dob" name="dob" required>
+
+    <br>
+
+    <label>
+      <input type="checkbox" id="terms" name="terms" required>
+      Accepted terms?
+    </label>
+
+    <br>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <!-- Table for displaying data -->
+  <h2>Entries</h2>
+  <table id="userData">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Dob</th>
+        <th>Accepted terms?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Data will be dynamically added here -->
+    </tbody>
+  </table>
+
+  <script>
+    document.getElementById('dob').addEventListener('input', function () {
+      let dob = new Date(this.value);
+      let today = new Date();
+      let age = today.getFullYear() - dob.getFullYear();
+
+      if (age < 18 || age > 55) {
+        alert('Please enter a valid date of birth between ages 18 and 55.');
+        this.value = ''; // Clear the input field if the age is not within the specified range.
+      }
+    });
+  </script>
+
+</body>
+</html>
